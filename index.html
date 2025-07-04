@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KULIKOV CYBER CONFECTIONERY [KCC]</title>
+
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Audiowide&display=swap" rel="stylesheet">
+
+    <!-- Библиотека для анимаций -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ----- ОБЩИЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ ----- */
+        :root {
+            --color-bg: #0a0a0a;
+            --color-text: #e0e0e0;
+            --color-neon-pink: #ff00ff;
+            --color-neon-cyan: #00ffff;
+            --color-neon-purple: #9d00ff;
+            --font-main: 'Orbitron', sans-serif;
+            --font-accent: 'Audiowide', cursive;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)),
+                url('https://images.unsplash.com/photo-1581977014234-31429355de39?q=80&w=2070&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* ----- ХЕЛПЕРЫ И ЭФФЕКТЫ ----- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-family: var(--font-accent);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            color: var(--color-neon-cyan);
+            text-shadow: 0 0 5px var(--color-neon-cyan), 0 0 15px var(--color-neon-cyan);
+        }
+
+        .glitch {
+            animation: glitch 1.5s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+
+        .glitch-2 {
+            animation: glitch-2 2s linear infinite reverse;
+        }
+
+        @keyframes glitch-2 {
+            2%, 64% { transform: translate(0, 2px) skew(0deg); }
+            4%, 60% { transform: translate(0, -2px) skew(0deg); }
+            62% { transform: translate(0, 0) skew(-5deg); }
+        }
+
+        /* ----- ШАПКА САЙТА ----- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-neon-pink);
+            text-shadow: 0 0 5px var(--color-neon-pink), 0 0 10px var(--color-neon-pink);
+            text-decoration: none;
+        }
+
+        .nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav a:hover {
+            color: var(--color-neon-pink);
+            text-shadow: 0 0 5px var(--color-neon-pink);
+        }
+
+        /* ----- СЕКЦИЯ HERO ----- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-logo {
+            font-family: var(--font-accent);
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--color-neon-pink);
+            text-shadow: 0 0 10px var(--color-neon-pink), 0 0 30px var(--color-neon-pink), 0 0 50px var(--color-neon-purple);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-slogan {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--color-neon-cyan);
+            text-shadow: 0 0 5px var(--color-neon-cyan);
+        }
+
+        .btn-cyber {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid var(--color-neon-pink);
+            color: var(--color-neon-pink);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cyber:hover {
+            background: var(--color-neon-pink);
+            color: var(--color-bg);
+            box-shadow: 0 0 20px var(--color-neon-pink);
+        }
+
+        /* ----- СЕКЦИЯ "О НАС" ----- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            border: 3px solid var(--color-neon-cyan);
+            padding: 10px;
+            box-shadow: 0 0 20px var(--color-neon-cyan);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ----- СЕКЦИЯ "ПРОДУКЦИЯ" ----- */
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--color-neon-pink);
+            opacity: 0;
+            transition: all 0.4s ease;
+            transform: scale(1.1);
+        }
+
+        .product-card:hover:before {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 0 25px var(--color-neon-pink);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-card-info {
+            transform: translateY(0);
+        }
+
+        .product-card-info h3 {
+            font-family: var(--font-accent);
+            color: var(--color-neon-pink);
+            margin: 0;
+        }
+
+        /* ----- СЕКЦИЯ "ОТЗЫВЫ" ----- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .review-card:before {
+            content: '“';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 5rem;
+            color: rgba(0, 255, 255, 0.1);
+            font-family: serif;
+        }
+
+        .review-card p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .review-author {
+            text-align: right;
+            font-weight: 700;
+            color: var(--color-neon-cyan);
+        }
+
+        /* ----- СЕКЦИЯ "КОНТАКТЫ" ----- */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background: #1a1a1a;
+            border: 2px solid var(--color-neon-purple);
+            box-shadow: 0 0 20px var(--color-neon-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-accent);
+            color: var(--color-neon-purple);
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-accent);
+            color: var(--color-neon-cyan);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .social-links a {
+            color: var(--color-text);
+            font-size: 1.5rem;
+            margin-right: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--color-neon-pink);
+            text-shadow: 0 0 10px var(--color-neon-pink);
+        }
+
+        /* ----- АДАПТИВНОСТЬ ----- */
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .section-title { font-size: 2rem; }
+            .hero-logo { font-size: 3rem; }
+            .about-content, .contact-content { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <a href="#hero" class="logo glitch">KCC</a>
+            <nav class="nav">
+                <a href="#about">О нас</a>
+                <a href="#products">Продукция</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section id="hero" class="hero">
+        <div class="container" data-aos="fade-up">
+            <h1 class="hero-logo glitch">KULIKOVSKY</h1>
+            <p class="hero-slogan">Десерты из будущего. Уже сегодня.</p>
+            <a href="#products" class="btn-cyber">Изучить каталог ></a>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Протокол: KCC_HISTORY.LOG</h2>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p>Система "Кондитерский дом Куликовского" была инициализирована в 1991 году. Наша первичная директива: синтез классических рецептур и кибернетических инноваций для создания десертов нового поколения.</p>
+                    <p>Каждый торт — это результат работы нейросетей, анализирующих триллионы вкусовых комбинаций, и мастеров-кондитеров, воплощающих цифровые шедевры в реальность. Мы не просто печем торты. Мы программируем вкус.</p>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1551893314-d04365823903?q=80&w=1887&auto=format&fit=crop" alt="[Изображение футуристичной кондитерской]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Продукция -->
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Каталог продукции v2.0.77</h2>
+            <div class="product-gallery">
+                <div class="product-card" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1987&auto=format&fit=crop" alt="[Изображение торта 'Нео-Медовик']">
+                    <div class="product-card-info"><h3>Нео-Медовик</h3></div>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=1950&auto=format&fit=crop" alt="[Изображение торта 'Кибер-Панчо']">
+                    <div class="product-card-info"><h3>Кибер-Панчо</h3></div>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b18?q=80&w=1887&auto=format&fit=crop" alt="[Изображение торта 'Глитч-Чизкейк']">
+                    <div class="product-card-info"><h3>Глитч-Чизкейк</h3></div>
+                </div>
+                <div class="product-card" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1616690710400-9140372369a3?q=80&w=1887&auto=format&fit=crop" alt="[Изображение торта 'Красный Велосити']">
+                    <div class="product-card-info"><h3>Красный Велосити</h3></div>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1562440102-395a4a4964b3?q=80&w=1887&auto=format&fit=crop" alt="[Изображение торта 'Синтетический Наполеон']">
+                    <div class="product-card-info"><h3>Синтетический Наполеон</h3></div>
+                </div>
+                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1627485830923-361282a5b42d?q=80&w=1887&auto=format&fit=crop" alt="[Изображение торта 'Плазменный Эстерхази']">
+                    <div class="product-card-info"><h3>Плазменный Эстерхази</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Отзывы -->
+    <section id="reviews" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Логи обратной связи</h2>
+            <div class="reviews-grid">
+                <div class="review-card" data-aos="fade-right">
+                    <p>Вкусовые рецепторы испытали системный шок. Это не еда, это апгрейд. 10/10, буду реплицировать этот опыт.</p>
+                    <div class="review-author">- User_7721</div>
+                </div>
+                <div class="review-card" data-aos="fade-up">
+                    <p>Заказал торт на корпоратив в 'Арасака'. Даже импланты топ-менеджеров не смогли проанализировать всю глубину этого вкуса. Высший уровень.</p>
+                    <div class="review-author">- Netrunner-9S</div>
+                </div>
+                <div class="review-card" data-aos="fade-left">
+                    <p>Идеально. Просто идеально. Как будто взломали матрицу вкуса и выкачали оттуда самый чистый код наслаждения. Рекомендую всем био- и синтетическим формам жизни.</p>
+                    <div class="review-author">- V.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Координаты штаб-квартиры</h2>
+            <div class="contact-content">
+                <div class="map-container" data-aos="fade-right">
+                    KCC_BISHKEK_GEO_NODE
+                </div>
+                <div class="contact-info" data-aos="fade-left">
+                    <h3>Канал связи:</h3>
+                    <p><strong>Адрес:</strong> Нео-Бишкек, сектор 7, проспект Чуй, 127</p>
+                    <p><strong>Вокс-линия:</strong> +996 (312) 68-15-15</p>
+                    <p><strong>Протокол передачи данных:</strong> info@kulikov.com</p>
+                    <h3 style="margin-top: 30px;">Сетевые узлы:</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Telegram">TG</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer style="text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255, 0, 255, 0.2);">
+        <p>&copy; 2024 KULIKOVSKY CYBER CONFECTIONERY. Все права кибернетически защищены.</p>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Инициализация библиотеки анимаций
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Плавный скролл
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
